@@ -1,6 +1,6 @@
 ## Project:React Google calendar
 
-### [Netify]([https://netlify.app/](https://lucent-dango-ffb4bb.netlify.app/))
+### [Netify](https://netlify.app/](https://lucent-dango-ffb4bb.netlify.app/)
 
 ### The tech stack is:
 
@@ -13,4 +13,4 @@
 
 ### Author
 
-- [Yuriy Dobyasnkiy]([https://github.com/](https://github.com/YDobryansky))
+- [Yuriy Dobyasnkiy](https://github.com/](https://github.com/YDobryansky)

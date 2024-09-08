@@ -1,6 +1,6 @@
 ## Project:React Google calendar
 
-### [Netify](https://project-react-calendar.netlify.app/)
+### [Netify](https://netlify.app/)
 
 ### The tech stack is:
 

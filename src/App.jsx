@@ -30,13 +30,14 @@ const App = () => {
 			try {
 				const fetchedEvents = await fetchEvent()
 
-				// Перевірка та фільтрація подій
-				const validEvents = fetchedEvents.filter(event => event.time)
-				if (validEvents.length !== fetchedEvents.length) {
-					console.warn('Some events are missing "time" property.')
-				}
+				// Трансформуємо події: перетворюємо `startTime` та `endTime` з числа на рядок
+				const transformedEvents = fetchedEvents.map(event => ({
+					...event,
+					startTime: new Date(event.dateFrom).toLocaleTimeString(), // або toISOString()
+					endTime: new Date(event.dateTo).toLocaleTimeString(),
+				}))
 
-				setEvents(validEvents)
+				setEvents(transformedEvents)
 			} catch (err) {
 				console.error('Error fetching events:', err)
 				setError('Не вдалося завантажити події. Спробуйте пізніше.')

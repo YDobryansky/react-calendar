@@ -1,44 +1,48 @@
 .event {
-  position: absolute;
-  width: 80%;
-  background-color: cornflowerblue;
-  z-index: 1;
-  border-radius: 8px;
-  padding: 8px;
-  color: #fff;
+	position: absolute;
+	width: 80%;
+	background-color: cornflowerblue;
+	z-index: 1;
+	border-radius: 8px;
+	padding: 5px 10px;
+	color: #fff;
+	height: 100%;
+	font-size: 14px;
+	line-height: 1.1;
 
-  &__title {
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-bottom: 8px;
-  }
+	&__title {
+		width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		margin-bottom: 5px;
+		font-weight: bold;
+	}
 
-  &:hover {
-    font-weight: bold;
-    background-color: red;
-  }
+	&:hover {
+		cursor: pointer;
+		opacity: 0.8;
+	}
 }
 
 .delete-event-btn {
-  display: flex;
-  align-items: flex-start;
-  z-index: 2;
-  background: #fff;
-  border: none;
-  border-radius: 4px;
-  height: 34px;
-  padding: 10px;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  bottom: -30px;
-  right: -50px;
-  color: gray;
-  cursor: pointer;
+	display: flex;
+	align-items: flex-start;
+	z-index: 10;
+	background: #fff;
+	border: none;
+	border-radius: 4px;
+	height: 34px;
+	padding: 10px;
+	box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
+	position: absolute;
+	top: 13px;
+	right: -20px;
+	color: gray;
+	cursor: pointer;
 }
 
 i {
-  font-size: 14px;
-  margin-right: 10px;
+	font-size: 14px;
+	margin-right: 10px;
 }

@@ -5,20 +5,7 @@ import { deleteEvent, fetchEvent } from '../../gateway/eventsGateway'
 import { canDeleteEvent } from '../../utils/validation'
 import './event.scss'
 
-const Event = ({
-	id,
-	height,
-	marginTop,
-	title,
-	time,
-	description,
-	setEvents,
-}) => {
-	const eventStyle = {
-		height,
-		marginTop,
-	}
-
+const Event = ({ id, title, time, description, setEvents }) => {
 	const [showDeleteBtn, setShowDeleteBtn] = useState(false)
 
 	useEffect(() => {
@@ -66,7 +53,7 @@ const Event = ({
 	const toggleDeleteBtn = () => setShowDeleteBtn(prev => !prev)
 
 	return (
-		<div style={eventStyle} className='event' onClick={toggleDeleteBtn}>
+		<div className='event' onClick={toggleDeleteBtn}>
 			{showDeleteBtn && (
 				<button className='delete-event-btn' onClick={onDelete}>
 					<i className='fas fa-trash'></i> Delete
@@ -81,8 +68,6 @@ const Event = ({
 
 Event.propTypes = {
 	id: PropTypes.string.isRequired,
-	height: PropTypes.string.isRequired,
-	marginTop: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	time: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,

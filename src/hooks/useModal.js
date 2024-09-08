@@ -10,7 +10,6 @@ const useModal = () => {
 	}
 
 	const closeModal = () => {
-		console.log('Closing modal from button click...')
 		setIsModalOpen(false)
 	}
 

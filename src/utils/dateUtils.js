@@ -41,9 +41,9 @@ export const formatMins = mins => (mins < 10 ? `0${mins}` : mins)
 export const getDisplayMonth = date => {
 	const startWeek = moment(date).startOf('week')
 	const endWeek = moment(date).endOf('week')
-	const startMonth = startWeek.format('MMM')
+	const startMonth = startWeek.format('MMMM')
 	const startYear = startWeek.format('YYYY')
-	const endMonth = endWeek.format('MMM')
+	const endMonth = endWeek.format('MMMM')
 	const endYear = endWeek.format('YYYY')
 
 	if (startMonth === endMonth) {
@@ -55,7 +55,15 @@ export const getDisplayMonth = date => {
 		: `${startMonth} ${startYear}-${endMonth} ${endYear}`
 }
 
-export const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+export const days = [
+	'Sunday',
+	'Monday',
+	'Tuesday',
+	'Wednesday',
+	'Thursday',
+	'Friday',
+	'Saturday',
+]
 
 export const months = [
 	'January',

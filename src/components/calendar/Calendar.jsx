@@ -34,7 +34,8 @@ Calendar.propTypes = {
 		PropTypes.shape({
 			id: PropTypes.string.isRequired,
 			title: PropTypes.string.isRequired,
-			time: PropTypes.string.isRequired,
+			startTime: PropTypes.string.isRequired,
+			endTime: PropTypes.string.isRequired,
 			description: PropTypes.string.isRequired,
 		})
 	).isRequired,

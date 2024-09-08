@@ -1,4 +1,4 @@
-const baseUrl = `https://66d4685a5b34bcb9ab3e8536.mockapi.io/events`
+const baseUrl = `https://66c1e3e6f83fffcb587a863b.mockapi.io/events`
 
 // Функція для перевірки статусу відповіді
 const checkResponse = response => {

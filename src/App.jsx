@@ -29,11 +29,9 @@ const App = () => {
 			setError(null)
 			try {
 				const fetchedEvents = await fetchEvent()
-
-				// Трансформуємо події: перетворюємо `startTime` та `endTime` з числа на рядок
 				const transformedEvents = fetchedEvents.map(event => ({
 					...event,
-					startTime: new Date(event.dateFrom).toLocaleTimeString(), // або toISOString()
+					startTime: new Date(event.dateFrom).toLocaleTimeString(),
 					endTime: new Date(event.dateTo).toLocaleTimeString(),
 				}))
 
@@ -58,11 +56,13 @@ const App = () => {
 			/>
 			{isLoading && <div className='loader'>Завантаження подій...</div>}
 			{error && <div className='error'>{error}</div>}
-			<Calendar
-				weekDates={weekDates}
-				events={events}
-				setEvents={memoizedSetEvents}
-			/>
+			{!isLoading && !error && (
+				<Calendar
+					weekDates={weekDates}
+					events={events}
+					setEvents={memoizedSetEvents}
+				/>
+			)}
 		</>
 	)
 }

@@ -1,24 +1,24 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const useModal = () => {
-	const [isModalOpen, setIsModalOpen] = useState(false)
-	const [dateStart, setDateStart] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [dateStart, setDateStart] = useState(null);
 
-	const openModal = dateFrom => {
-		setDateStart(dateFrom ? new Date(dateFrom).toISOString() : null)
-		setIsModalOpen(true)
-	}
+  const openModal = dateFrom => {
+    setDateStart(dateFrom ? new Date(dateFrom).toISOString() : null);
+    setIsModalOpen(true);
+  };
 
-	const closeModal = () => {
-		setIsModalOpen(false)
-	}
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-	return {
-		dateStart,
-		isModalOpen,
-		openModal,
-		closeModal,
-	}
-}
+  return {
+    dateStart,
+    isModalOpen,
+    openModal,
+    closeModal,
+  };
+};
 
-export default useModal
+export default useModal;

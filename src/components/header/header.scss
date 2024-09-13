@@ -1,63 +1,63 @@
 .header {
-	display: flex;
-	height: 60px;
-	padding: 0 48px;
-	align-items: center;
-	border-bottom: 2px solid #c9c9c9;
+  display: flex;
+  height: 60px;
+  padding: 0 48px;
+  align-items: center;
+  border-bottom: 2px solid #c9c9c9;
 }
 
 .create-event-btn {
-	padding: 0 16px;
-	background: transparent;
-	border-radius: 50px;
-	box-shadow: 0 3px 10px #ccc;
-	transition: all 0.2s;
-	position: relative;
-	top: 0px;
-	cursor: pointer;
+  padding: 0 16px;
+  background: transparent;
+  border-radius: 50px;
+  box-shadow: 0 3px 10px #ccc;
+  transition: all 0.2s;
+  position: relative;
+  top: 0px;
+  cursor: pointer;
 
-	&:active {
-		top: 3px;
-		box-shadow: 0 1px 0px #ccc;
-		transition: all 0.2s;
-	}
+  &:active {
+    top: 3px;
+    box-shadow: 0 1px 0px #ccc;
+    transition: all 0.2s;
+  }
 
-	&__icon {
-		margin-right: 8px;
-	}
+  &__icon {
+    margin-right: 8px;
+  }
 }
 
 .navigation {
-	&__today-btn {
-		margin-left: 32px;
-		padding: 0 16px;
-		background: transparent;
-		border-radius: 8px;
-		box-shadow: 0 3px 10px #ccc;
-		transition: all 0.2s;
-		position: relative;
-		top: 0px;
-		cursor: pointer;
+  &__today-btn {
+    margin-left: 32px;
+    padding: 0 16px;
+    background: transparent;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px #ccc;
+    transition: all 0.2s;
+    position: relative;
+    top: 0px;
+    cursor: pointer;
 
-		&:active {
-			top: 3px;
-			box-shadow: 0 1px 0px #ccc;
-			transition: all 0.2s;
-		}
-	}
+    &:active {
+      top: 3px;
+      box-shadow: 0 1px 0px #ccc;
+      transition: all 0.2s;
+    }
+  }
 
-	&__nav-icon {
-		font-size: 16px;
-		margin-left: 20px;
-	}
+  &__nav-icon {
+    font-size: 16px;
+    margin-left: 20px;
+  }
 
-	&__displayed-month {
-		margin-left: 10px;
-	}
+  &__displayed-month {
+    margin-left: 10px;
+  }
 }
 
 #colored-plus {
-	background: linear-gradient(90deg, #4285f4, #34a853, #fbbc05, #ea4335);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg, #4285f4, #34a853, #fbbc05, #ea4335);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

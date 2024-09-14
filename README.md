@@ -1,4 +1,4 @@
-## Project:React Google calendar
+## Project: React Google calendar
 
 ### [Netify](https://lucent-dango-ffb4bb.netlify.app/)
 

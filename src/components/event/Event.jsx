@@ -5,19 +5,34 @@ import { deleteEvent, fetchEvent } from '../../gateway/eventsGateway';
 import { canDeleteEvent } from '../../utils/validation';
 import './event.scss';
 
-const Event = ({ id, title, time, description, setEvents }) => {
+const Event = ({ id, title, time, description, setEvents, startDay }) => {
   const [showDeleteBtn, setShowDeleteBtn] = useState(false);
+  //additional css for event
+  const [eventHeight, setEventHeight] = useState('100');
+  const [eventMarginTop, setEventMarginTop] = useState('0');
 
   useEffect(() => {
     const currentTime = moment();
-    const [, endTimeStr] = time.split(' - ');
+    const [startTimeStr, endTimeStr] = time.split(' - ');
+    const eventStartTime = moment(
+      `${currentTime.format('YYYY-MM-DD')} ${startTimeStr}`,
+      'YYYY-MM-DD HH:mm',
+    );
+
     const eventEndTime = moment(
       `${currentTime.format('YYYY-MM-DD')} ${endTimeStr}`,
       'YYYY-MM-DD HH:mm',
     );
 
+    //additional css
+    const eventDurationMinutes = eventEndTime.diff(eventStartTime, 'minutes');
+    const eventHeightPercentage = (eventDurationMinutes / 60) * 100;
+    setEventHeight(`${eventHeightPercentage}%`);
+    //margin for event
+    const startMinutes = eventStartTime.minutes();
+    setEventMarginTop(`${startMinutes}px`);
+
     if (currentTime.isAfter(eventEndTime)) {
-      // Винесення асинхронної логіки в окрему функцію для уникнення повторення
       const handleExpiredEvent = async () => {
         try {
           await deleteEvent(id);
@@ -27,13 +42,12 @@ const Event = ({ id, title, time, description, setEvents }) => {
           console.error('Error deleting event:', error);
         }
       };
-
       handleExpiredEvent();
     }
   }, [id, time, setEvents]);
 
-  const handleDelete = async () => {
-    if (!canDeleteEvent(time)) return;
+  const handleDelete = async id => {
+    if (!canDeleteEvent(time, startDay)) return;
 
     try {
       await deleteEvent(id);
@@ -46,22 +60,27 @@ const Event = ({ id, title, time, description, setEvents }) => {
 
   const onDelete = event => {
     event.stopPropagation();
-    handleDelete();
+    handleDelete(id);
     setShowDeleteBtn(false);
   };
 
   const toggleDeleteBtn = () => setShowDeleteBtn(prev => !prev);
 
   return (
-    <div className="event" onClick={toggleDeleteBtn}>
+    <div
+      className="event"
+      onClick={toggleDeleteBtn}
+      style={{ height: eventHeight, marginTop: eventMarginTop }}
+    >
+      <div className="event__title">{title}</div>
+      <div className="event__time">{time}</div>
+      <div className="event__description">{description}</div>
+
       {showDeleteBtn && (
         <button className="delete-event-btn" onClick={onDelete}>
           <i className="fas fa-trash"></i> Delete
         </button>
       )}
-      <div className="event__title">{title}</div>
-      <div className="event__time">{time}</div>
-      <div className="event__description">{description}</div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { formatMins } from '../../../src/utils/dateUtils.js';
 import useModal from '../../hooks/useModal';
-import Event from '../event/Event';
+import Event from '../event/Event.jsx';
 import Modal from '../modal/Modal.jsx';
 import RedTimeLine from '../redTimeLine/RedTimeLine.jsx';
 import './hour.scss';
@@ -51,9 +51,9 @@ const Hour = ({ dataHour, hourEvents, setEvents, dataDay, month }) => {
       onClick={handleSlotClick}
     >
       {hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
+        const eventStartDay = `${dateFrom.getDate()}`;
         const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
         const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
-        const eventSize = (dateTo.getTime() - dateFrom.getTime()) / (1000 * 60);
 
         return (
           <Event
@@ -63,6 +63,7 @@ const Hour = ({ dataHour, hourEvents, setEvents, dataDay, month }) => {
             description={description}
             setEvents={setEvents}
             id={id}
+            startDay={eventStartDay}
           />
         );
       })}

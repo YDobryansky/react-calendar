@@ -4,16 +4,13 @@ export const validEvent = (newEvent, existingEvent) => {
   const { dateFrom, dateTo } = newEvent;
 
   // Проверка на текущий день
-  const selectedDate = moment(dateFrom).startOf('day');
-  const today = moment().startOf('day');
-
-  if (!selectedDate.isSame(today)) {
-    alert('The event must start and end within one day');
-    return false;
-  }
-
   const start = moment(dateFrom);
   const end = moment(dateTo);
+
+  if (!start.isSame(end, 'day')) {
+    alert('The event must start and end within the same day');
+    return false;
+  }
 
   // Проверка: время окончания должно быть позже времени начала
   if (end.isSameOrBefore(start)) {
@@ -72,9 +69,9 @@ export const canCreateEvent = time => {
   return true;
 };
 
-export const canDeleteEvent = time => {
-  const currentTime = moment(); // Текущее время
-
+export const canDeleteEvent = (time, startDay) => {
+  const currentTime = moment();
+  const dayOfMonth = currentTime.date();
   const [startTimeStr] = time.split(' - ');
 
   const eventStartTime = moment(
@@ -82,17 +79,19 @@ export const canDeleteEvent = time => {
     'YYYY-MM-DD HH:mm',
   );
 
-  const differenceInMinutes = currentTime.diff(eventStartTime, 'minutes');
+  const differenceInMinutes = eventStartTime.diff(currentTime, 'minutes');
 
   //Нельзя удалить событие если оно уже началось
-  if (currentTime.isAfter(eventStartTime)) {
-    alert("You can't delete the event once it has started");
-    return false;
-  }
-  // Проверка, если текущее время меньше времени начала события + 15 минут
-  if (differenceInMinutes >= 15) {
-    alert('You cannot delete an event less than 15 minutes before it starts');
-    return false;
+  if (startDay <= dayOfMonth) {
+    if (currentTime.isAfter(eventStartTime)) {
+      alert("You can't delete the event once it has started");
+      return false;
+    }
+    // Проверка, если до начала события осталось менее 15 минут
+    if (differenceInMinutes < 15) {
+      alert('You cannot delete an event less than 15 minutes before it starts');
+      return false;
+    }
   }
 
   return true;

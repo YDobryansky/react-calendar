@@ -37,5 +37,6 @@ export const deleteEvent = async eventId => {
   const response = await fetch(`${baseUrl}/${eventId}`, {
     method: 'DELETE',
   });
+
   checkResponse(response);
 };

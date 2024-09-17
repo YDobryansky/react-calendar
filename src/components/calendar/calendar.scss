@@ -6,12 +6,17 @@
   &__header {
     display: flex;
     height: 100px;
-    padding-left: 48px;
-    padding-top: 20px;
+    padding: 10px 0 10px 48px;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 21;
+    margin-top: 60px;
   }
 
   &__body {
     display: flex;
+    margin-top: 160px;
   }
 
   &__week-container {
@@ -34,12 +39,6 @@
     position: relative;
     flex: 1;
     border-left: 1px solid #eee;
-  }
-
-  &__time-slot {
-    height: 59px;
-    position: relative;
-    border-bottom: 1px solid #eee;
   }
 
   &__day-label {

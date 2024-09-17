@@ -1,8 +1,8 @@
 .event {
-  //position: absolute;
+  position: relative;
   width: 90%;
   background-color: #6495ed;
-  //z-index: 1;
+  z-index: 1;
   border-radius: 8px;
   padding: 8px;
   color: #fff;
@@ -26,6 +26,10 @@
   &:hover {
     cursor: pointer;
     opacity: 0.8;
+  }
+  &__time {
+    margin-bottom: 5px;
+    font-weight: 700;
   }
 }
 

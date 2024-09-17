@@ -12,13 +12,12 @@
 .time-slot {
   height: 59px;
   width: 48px;
-  display: flex;
-  justify-content: flex-end;
+  text-align: right;
 
   &__time {
     font-size: 12px;
     opacity: 0.7;
-    margin-right: 4px;
-    margin-top: -7px;
+    padding: 4px;
+    border-top: 1px solid var(--lt-color-gray-300);
   }
 }

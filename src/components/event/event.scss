@@ -1,18 +1,22 @@
 .event {
-  position: absolute;
-  width: 80%;
-  background-color: cornflowerblue;
-  z-index: 1;
+  //position: absolute;
+  width: 90%;
+  background-color: #6495ed;
+  //z-index: 1;
   border-radius: 8px;
-  padding: 5px 10px;
+  padding: 8px;
   color: #fff;
-  height: 100%;
-  font-size: 14px;
-  line-height: 1.1;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  cursor: pointer;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
 
   &__title {
     width: 100%;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-bottom: 5px;

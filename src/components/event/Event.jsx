@@ -32,18 +32,18 @@ const Event = ({ id, title, time, description, setEvents, startDay }) => {
     const startMinutes = eventStartTime.minutes();
     setEventMarginTop(`${startMinutes}px`);
 
-    if (currentTime.isAfter(eventEndTime)) {
-      const handleExpiredEvent = async () => {
-        try {
-          await deleteEvent(id);
-          const updatedEvents = await fetchEvent();
-          setEvents(updatedEvents);
-        } catch (error) {
-          console.error('Error deleting event:', error);
-        }
-      };
-      handleExpiredEvent();
-    }
+    // if (currentTime.isAfter(eventEndTime)) {
+    //   const handleExpiredEvent = async () => {
+    //     try {
+    //       await deleteEvent(id);
+    //       const updatedEvents = await fetchEvent();
+    //       setEvents(updatedEvents);
+    //     } catch (error) {
+    //       console.error('Error deleting event:', error);
+    //     }
+    //   };
+    //   handleExpiredEvent();
+    // }
   }, [id, time, setEvents]);
 
   const handleDelete = async id => {

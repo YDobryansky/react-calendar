@@ -69,7 +69,7 @@ const Event = ({ id, title, time, description, setEvents, startDay }) => {
     <div
       className="event"
       onClick={toggleDeleteBtn}
-      style={{ height: eventHeight, marginTop: eventMarginTop }}
+      style={{ height: eventHeight, top: eventMarginTop }}
     >
       <div className="event__title">{title}</div>
       <div className="event__time">{time}</div>

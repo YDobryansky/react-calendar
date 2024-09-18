@@ -33,21 +33,24 @@
   }
 }
 
-.delete-event-btn {
-  display: flex;
-  align-items: flex-start;
-  z-index: 10;
-  background: #fff;
-  border: none;
-  border-radius: 4px;
-  height: 34px;
-  padding: 10px;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 13px;
-  right: 5px;
-  color: gray;
-  cursor: pointer;
+.delete-event {
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background: #fff;
+    border: none;
+    border-radius: 4px;
+    height: 34px;
+    padding: 10px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 13px;
+    right: 5px;
+    color: gray;
+    cursor: pointer;
+  }
 }
 
 i {

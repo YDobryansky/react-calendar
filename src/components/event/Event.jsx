@@ -64,8 +64,7 @@ const Event = ({ id, title, time, description, setEvents, startDay }) => {
     setShowDeleteBtn(false);
   };
 
-  const toggleDeleteBtn = () => setShowDeleteBtn(prev => !prev);
-
+  const toggleDeleteBtn = e => setShowDeleteBtn(prev => !prev);
   return (
     <div
       className="event"
@@ -77,9 +76,11 @@ const Event = ({ id, title, time, description, setEvents, startDay }) => {
       <div className="event__description">{description}</div>
 
       {showDeleteBtn && (
-        <button className="delete-event-btn" onClick={onDelete}>
-          <i className="fas fa-trash"></i> Delete
-        </button>
+        <div className="delete-event">
+          <button className="delete-event-btn" onClick={onDelete}>
+            <i className="fas fa-trash"></i> Delete
+          </button>
+        </div>
       )}
     </div>
   );

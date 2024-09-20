@@ -36,7 +36,7 @@ const Header = ({ weekStartDate, setWeekStartDate, setEvents }) => {
   return (
     <header className="header">
       <button className="button create-event-btn" onClick={handleCreateClick}>
-        <i className="fas fa-plus create-event-btn__icon" id="colored-plus"></i>
+        <i className="fas fa-plus create-event-btn__icon" id="colored-plus" />
         Create
       </button>
       <div className="navigation">

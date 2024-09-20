@@ -1,9 +1,17 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { generateWeekRange, getWeekStartDate } from '../src/utils/dateUtils.js';
-import './common.scss';
+
+// Components
 import Calendar from './components/calendar/Calendar.jsx';
 import Header from './components/header/Header.jsx';
+
+// Utils
+import { generateWeekRange, getWeekStartDate } from '../src/utils/dateUtils.js';
+
+// Gateways
 import { fetchEvent } from './gateway/eventsGateway.js';
+
+// Styles
+import './common.scss';
 
 const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
@@ -11,6 +19,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Завантаження тижневих дат
   const weekDates = useMemo(() => {
     return generateWeekRange(getWeekStartDate(weekStartDate));
   }, [weekStartDate]);
@@ -23,6 +32,7 @@ const App = () => {
     setEvents(newEvents);
   }, []);
 
+  // Завантаження подій лише один раз
   useEffect(() => {
     const loadEvents = async () => {
       setIsLoading(true);
@@ -45,7 +55,7 @@ const App = () => {
       }
     };
 
-    loadEvents();
+    loadEvents(); // Завантаження подій лише один раз при завантаженні
   }, []);
 
   return (

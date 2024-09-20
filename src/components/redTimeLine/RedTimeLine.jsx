@@ -31,8 +31,8 @@ const RedTimeLine = ({ dataDay, month }) => {
 
   return (
     <div style={style} className="red-time" data-month={currentMonth} data-day={currentDay}>
-      <div className="red-time__triangle"></div>
-      <div className="red-time__line"></div>
+      <div className="red-time__triangle" />
+      <div className="red-time__line" />
     </div>
   );
 };

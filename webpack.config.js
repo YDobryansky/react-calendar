@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
-module.exports = (env, argv) => {
+module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
   const config = {
     mode: isProduction ? 'production' : 'development',

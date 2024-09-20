@@ -1,3 +1,11 @@
+// Variables
+$white: #fff;
+$light-gray: #cccccc45;
+$gray-border: #ccc;
+$blue: #1a73e8;
+$cornflower-blue: cornflowerblue;
+
+// Modal styles
 .modal {
   position: fixed;
   display: flex;
@@ -5,9 +13,9 @@
   align-items: center;
 
   &__content {
-    background: #fff;
+    background: $white;
     padding: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid $gray-border;
     border-radius: 8px;
   }
 }
@@ -18,7 +26,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: $light-gray;
   z-index: 20;
 }
 
@@ -47,11 +55,13 @@
     margin: 8px;
     border: none;
     outline: 0;
+
     &[name='title']:focus,
     &[name='description']:focus {
-      border-bottom: 2px solid #1a73e8;
+      border-bottom: 2px solid $blue;
       padding: 3px 2px;
     }
+
     &[name='description'] {
       height: 100px;
     }
@@ -61,9 +71,8 @@
     margin: 8px;
     margin-left: auto;
     border: none;
-    color: #fff;
-    background-color: cornflowerblue;
-    border: none;
+    color: $white;
+    background-color: $cornflower-blue;
     padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;

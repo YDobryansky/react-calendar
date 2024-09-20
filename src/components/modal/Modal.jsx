@@ -113,4 +113,5 @@ export default Modal;
 Modal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   setEvents: PropTypes.func.isRequired,
+  dateStart: PropTypes.string.isRequired,
 };

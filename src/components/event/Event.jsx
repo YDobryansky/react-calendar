@@ -31,22 +31,11 @@ const Event = ({ id, title, time, description, setEvents, startDay }) => {
     //margin for event
     const startMinutes = eventStartTime.minutes();
     setEventMarginTop(`${startMinutes}px`);
-
-    // if (currentTime.isAfter(eventEndTime)) {
-    //   const handleExpiredEvent = async () => {
-    //     try {
-    //       await deleteEvent(id);
-    //       const updatedEvents = await fetchEvent();
-    //       setEvents(updatedEvents);
-    //     } catch (error) {
-    //       console.error('Error deleting event:', error);
-    //     }
-    //   };
-    //   handleExpiredEvent();
-    // }
   }, [id, time, setEvents]);
 
-  const handleDelete = async id => {
+  const handleDelete = async (event, id) => {
+    event.stopPropagation();
+
     if (!canDeleteEvent(time, startDay)) return;
 
     try {
@@ -55,13 +44,9 @@ const Event = ({ id, title, time, description, setEvents, startDay }) => {
       setEvents(updatedEvents);
     } catch (error) {
       console.error('Error deleting event:', error);
+    } finally {
+      setShowDeleteBtn(false);
     }
-  };
-
-  const onDelete = event => {
-    event.stopPropagation();
-    handleDelete(id);
-    setShowDeleteBtn(false);
   };
 
   const toggleDeleteBtn = e => setShowDeleteBtn(prev => !prev);
@@ -77,7 +62,7 @@ const Event = ({ id, title, time, description, setEvents, startDay }) => {
 
       {showDeleteBtn && (
         <div className="delete-event">
-          <button className="delete-event-btn" onClick={onDelete}>
+          <button className="delete-event-btn" onClick={event => handleDelete(event, id)}>
             <i className="fas fa-trash"></i> Delete
           </button>
         </div>
@@ -92,6 +77,7 @@ Event.propTypes = {
   time: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   setEvents: PropTypes.func.isRequired,
+  startDay: PropTypes.string.isRequired,
 };
 
 export default Event;

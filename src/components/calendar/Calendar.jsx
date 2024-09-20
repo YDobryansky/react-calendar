@@ -25,15 +25,7 @@ const Calendar = ({ weekDates, events, setEvents }) => {
 
 Calendar.propTypes = {
   weekDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)).isRequired,
-  events: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      startTime: PropTypes.string.isRequired,
-      endTime: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
   setEvents: PropTypes.func.isRequired,
 };
 

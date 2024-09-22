@@ -1,11 +1,13 @@
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { createEvent, fetchEvent } from '../../gateway/eventsGateway';
+
+import { createEvent } from '../../gateway/eventsGateway';
 import { validEvent } from '../../utils/validation';
 import EventForm from './EventForm';
 import './modal.scss';
 
-const Modal = ({ dateStart, closeModal, setEvents }) => {
+const Modal = ({ dateStart, closeModal, setEvents, events }) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -40,22 +42,16 @@ const Modal = ({ dateStart, closeModal, setEvents }) => {
     setBtnDisabled(!isFormFilled);
   }, [formData]);
 
-  const onCreate = newEvent => {
-    fetchEvent()
-      .then(events => {
-        const eventList = Array.isArray(events) ? events : [];
+  const onCreate = async newEvent => {
+    if (!validEvent(newEvent, events)) return;
 
-        if (!validEvent(newEvent, eventList)) {
-          return;
-        }
-
-        return createEvent(newEvent);
-      })
-      .then(() => fetchEvent())
-      .then(updatedEvents => {
-        setEvents(updatedEvents);
-        closeModal();
-      });
+    try {
+      await createEvent(newEvent);
+      setEvents(prevEvents => [...prevEvents, newEvent]);
+      closeModal();
+    } catch (error) {
+      console.error('Error adding event:', error);
+    }
   };
 
   const handleChange = e => {
@@ -68,11 +64,13 @@ const Modal = ({ dateStart, closeModal, setEvents }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
+
     const newEvent = {
+      id: (parseInt(_.last(events).id) + 1).toString(),
       title: formData.title,
       description: formData.description,
-      dateFrom: new Date(`${formData.date}T${formData.startTime}`).toISOString(),
-      dateTo: new Date(`${formData.date}T${formData.endTime}`).toISOString(),
+      dateFrom: new Date(`${formData.date}T${formData.startTime}`),
+      dateTo: new Date(`${formData.date}T${formData.endTime}`),
     };
 
     if (!validEvent(newEvent)) {
@@ -114,4 +112,5 @@ Modal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   setEvents: PropTypes.func.isRequired,
   dateStart: PropTypes.string.isRequired,
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

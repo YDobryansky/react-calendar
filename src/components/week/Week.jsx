@@ -22,6 +22,7 @@ const Week = ({ weekDates, events = [], setEvents, month }) => {
             dayEvents={dayEvents}
             setEvents={setEvents}
             month={month}
+            events={events}
           />
         );
       })}
@@ -34,6 +35,7 @@ Week.propTypes = {
   events: PropTypes.array,
   setEvents: PropTypes.func.isRequired,
   month: PropTypes.string.isRequired,
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Week;

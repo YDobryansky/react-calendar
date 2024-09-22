@@ -7,7 +7,6 @@ import Week from '../week/Week';
 import './calendar.scss';
 
 const Calendar = ({ weekDates, events, setEvents }) => {
-  // Отримання місяця, який відображається, може бути розміщено безпосередньо в рендері
   const month = getDisplayMonth(weekDates[0]);
 
   return (

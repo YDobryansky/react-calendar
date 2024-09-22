@@ -1,7 +1,7 @@
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { deleteEvent, fetchEvent } from '../../gateway/eventsGateway';
+import { deleteEvent, fetchEvent } from '../../gateway/eventsGateway.js';
 import { canDeleteEvent } from '../../utils/validation';
 import './event.scss';
 

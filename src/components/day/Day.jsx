@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Hour from '../hour/Hour';
 
-const Day = ({ dataDay, dayEvents, setEvents, month }) => {
+const Day = ({ dataDay, dayEvents, setEvents, month, events }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
@@ -20,6 +20,7 @@ const Day = ({ dataDay, dayEvents, setEvents, month }) => {
             setEvents={setEvents}
             dataDay={dataDay}
             month={month}
+            events={events}
           />
         );
       })}
@@ -32,6 +33,7 @@ Day.propTypes = {
   dayEvents: PropTypes.array.isRequired,
   setEvents: PropTypes.func.isRequired,
   month: PropTypes.string.isRequired,
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Day;

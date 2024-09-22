@@ -8,7 +8,7 @@ import Modal from '../modal/Modal.jsx';
 import RedTimeLine from '../redTimeLine/RedTimeLine.jsx';
 import './hour.scss';
 
-const Hour = ({ dataHour, hourEvents, setEvents, dataDay, month }) => {
+const Hour = ({ dataHour, hourEvents, setEvents, dataDay, month, events }) => {
   const { openModal, isModalOpen, closeModal, dateStart } = useModal();
 
   const handleSlotClick = event => {
@@ -64,11 +64,19 @@ const Hour = ({ dataHour, hourEvents, setEvents, dataDay, month }) => {
             setEvents={setEvents}
             id={id}
             startDay={eventStartDay}
+            events={events}
           />
         );
       })}
       {dataHour === new Date().getHours() && <RedTimeLine dataDay={dataDay} month={month} />}
-      {isModalOpen && <Modal closeModal={closeModal} setEvents={setEvents} dateStart={dateStart} />}
+      {isModalOpen && (
+        <Modal
+          closeModal={closeModal}
+          setEvents={setEvents}
+          dateStart={dateStart}
+          events={events}
+        />
+      )}
     </div>
   );
 };
@@ -79,6 +87,7 @@ Hour.propTypes = {
   setEvents: PropTypes.func.isRequired,
   dataDay: PropTypes.number.isRequired,
   month: PropTypes.string.isRequired,
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Hour;

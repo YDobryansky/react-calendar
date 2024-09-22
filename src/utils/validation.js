@@ -83,8 +83,10 @@ export const canDeleteEvent = (time, startDay) => {
     'YYYY-MM-DD HH:mm',
   );
 
+  const differenceInMinutes = currentTime.diff(eventStartTime, 'minutes');
+
   //Нельзя удалить событие если оно уже началось
-  if (parseInt(startDay) >= dayOfMonth) {
+  if (!(parseInt(startDay) < dayOfMonth || parseInt(startDay) > dayOfMonth)) {
     if (currentTime.isAfter(eventStartTime)) {
       if (currentTime.isAfter(eventEndTime)) return true;
 
@@ -92,7 +94,7 @@ export const canDeleteEvent = (time, startDay) => {
       return false;
     }
     //
-    if (currentTime.diff(eventStartTime, 'minutes') > -15) {
+    if (differenceInMinutes > -15) {
       alert('You cannot delete an event less than 15 minutes before it starts');
       return false;
     }

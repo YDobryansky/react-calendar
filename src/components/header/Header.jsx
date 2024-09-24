@@ -44,10 +44,10 @@ const Header = ({ weekStartDate, setWeekStartDate, setEvents }) => {
           Today
         </button>
         <button className="icon-button navigation__nav-icon" onClick={handlePrevWeek}>
-          <i className="fas fa-chevron-left"></i>
+          <i className="fas fa-chevron-left" />
         </button>
         <button className="icon-button navigation__nav-icon" onClick={handleNextWeek}>
-          <i className="fas fa-chevron-right"></i>
+          <i className="fas fa-chevron-right" />
         </button>
         <span className="navigation__displayed-week">{displayedWeek}</span>
       </div>

@@ -24,7 +24,7 @@ const Modal = ({ dateStart, closeModal, setEvents, events }) => {
       const dateString = date.toISOString().split('T')[0];
       const timeString = date.toTimeString().split(' ')[0];
 
-      const [hours, minutes] = timeString.substring(0, 5).split(':');
+      const [hours] = timeString.substring(0, 5).split(':');
       const endTimeDate = new Date(date);
       endTimeDate.setHours(Number(hours) + 1);
 

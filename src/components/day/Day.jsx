@@ -5,7 +5,7 @@ import Hour from '../hour/Hour';
 const Day = ({ dataDay, dayEvents, setEvents, month, events }) => {
   const hours = Array(24)
     .fill()
-    .map((val, index) => index);
+    .map((_, index) => index);
 
   return (
     <div className="calendar__day" data-day={dataDay}>

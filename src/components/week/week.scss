@@ -1,8 +1,4 @@
 .calendar {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 60px);
-
   &__week-container {
     display: flex;
     width: 100%;
